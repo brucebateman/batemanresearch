@@ -13,12 +13,13 @@ Modernized, single-page static rebuild of [batemanresearch.com](https://www.bate
 
 ## Contact form
 
-The form is not connected to a mail service yet. To deliver enquiries, create a form endpoint
-(for example at Formspree) and set it on the form:
+Enquiries are emailed to **info@batemanresearch.com** through [FormSubmit](https://formsubmit.co) (free, no account).
+The form posts to `https://formsubmit.co/ajax/info@batemanresearch.com`, includes a hidden spam trap,
+and sets the visitor's email as the reply-to address.
 
-```html
-<form id="contact-form" novalidate data-endpoint="https://formspree.io/f/your-id">
-```
+**One-time activation:** the first submission sends a confirmation email to info@batemanresearch.com.
+Click the link in it, and later enquiries are delivered. That email also gives you a random alias;
+to keep the address out of the page source, replace the email in the form's `data-endpoint` with the alias.
 
 ## Hosting
 
