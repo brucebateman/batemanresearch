@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bateman Research</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Bateman Research helps boards, investors, governments and startups understand the technologies that will matter in 3 to 5 years, and what they mean for your business. Semiconductors, photonics, telecom, automotive, energy and more.">
+<meta property="og:title" content="Bateman Research">
+<meta property="og:description" content="Technology foresight, due diligence and position papers. See the technology your business will run on in three to five years.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.batemanresearch.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23121417'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='34' fill='%23ffffff'%3Eb%3Ctspan fill='%23e0303a'%3Er%3C/tspan%3E%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Bateman Research","url":"https://www.batemanresearch.com/","foundingDate":"2013","description":"Technology foresight, M&A and investment due diligence, and position papers on technologies that will be prevalent in 3 to 5 years.","areaServed":["Europe","Taiwan","China","Worldwide"],"openingHours":"Mo-Fr 09:00-17:00","sameAs":["https://www.facebook.com/1540277052878230","http://brucebateman.com"]}
+</script>
+<style>
+/* Layout: a "horizon" page. A sticky masthead, a split hero that plots now → +5 years,
+   then ruled full-width bands (services, coverage, process, contact) on a 1120px measure. */
+:root {
+  --bg: #f5f6f7;          /* paper, slight cool bias */
+  --surface: #ffffff;
+  --ink: #121417;         /* the "bateman" black */
+  --muted: #5a6068;
+  --rule: #d9dce0;
+  --red: #d3202b;         /* the "research" red */
+  --red-soft: #fbe7e8;
+  --on-red: #ffffff;
+  --font-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --measure: 1120px;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-2: 1.5rem;
+  --step-3: clamp(1.75rem, 1.3rem + 1.6vw, 2.375rem);
+  --step-4: clamp(2.25rem, 1.4rem + 3.4vw, 3.75rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1013; --surface: #161a1f; --ink: #eef0f2; --muted: #a2a9b2;
+    --rule: #2a2f36; --red: #ff4d55; --red-soft: #2a1416; --on-red: #14080a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1013; --surface: #161a1f; --ink: #eef0f2; --muted: #a2a9b2;
+  --rule: #2a2f36; --red: #ff4d55; --red-soft: #2a1416; --on-red: #14080a;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 30; background: var(--bg);
+}
+img { max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
+p { margin: 0; }
+
+.wrap {
+  max-width: var(--measure); margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) { .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); } }
+
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--bg); padding: 8px 12px; z-index: 50; }
+.skip:focus { left: 16px; }
+
+/* Masthead */
+.masthead {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.wordmark { text-decoration: none; display: grid; gap: 1px; line-height: 1; }
+.wordmark b { font-family: var(--font-display); font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; }
+.wordmark b span { color: var(--red); }
+.wordmark small { font-family: var(--font-mono); font-size: 0.5625rem; letter-spacing: 0.06em; color: var(--muted); }
+.nav { display: flex; align-items: center; gap: 4px; }
+.nav a { text-decoration: none; font-size: 0.9375rem; padding: 8px 12px; border-radius: 6px; color: var(--muted); }
+.nav a:hover { color: var(--ink); }
+.nav .cta { background: var(--ink); color: var(--bg); font-weight: 500; margin-left: 6px; }
+.nav .cta:hover { background: var(--red); color: var(--on-red); }
+.menu-btn { display: none; font: inherit; background: none; border: 1px solid var(--rule); color: var(--ink); border-radius: 6px; padding: 7px 12px; }
+@media (max-width: 760px) {
+  .menu-btn { display: inline-block; }
+  .nav { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--bg); border-bottom: 1px solid var(--rule);
+    padding: 8px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px)); }
+  .nav a { padding: 12px 4px; border-bottom: 1px solid var(--rule); border-radius: 0; }
+  .nav .cta { margin: 12px 0 0; text-align: center; border-radius: 6px; border: 0; }
+  .nav:not(.open) { display: none; }
+}
+
+/* Hero */
+.hero .wrap { display: grid; gap: 48px; padding-block: 72px 64px; }
+@media (min-width: 900px) { .hero .wrap { grid-template-columns: 1.15fr 1fr; align-items: center; gap: 64px; padding-block: 96px 88px; } }
+.eyebrow { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); }
+.hero h1 { font-size: var(--step-4); font-weight: 700; margin-top: 16px; }
+.hero h1 em { font-style: normal; color: var(--red); white-space: nowrap; }
+.lede { font-size: var(--step-1); color: var(--muted); margin-top: 20px; max-width: 34em; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 500; padding: 12px 20px; border-radius: 8px; border: 1px solid var(--ink); transition: background .15s, color .15s, border-color .15s; font: inherit; cursor: pointer; }
+.btn-primary { background: var(--red); border-color: var(--red); color: var(--on-red); }
+.btn-primary:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { border-color: var(--red); color: var(--red); }
+
+/* Horizon chart: now → +5 years, with the 3–5 year window highlighted */
+.horizon { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 24px; min-width: 0; }
+.horizon-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.horizon-head h2 { font-size: var(--step-1); font-weight: 600; }
+.horizon-head span { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); }
+.axis { position: relative; margin-top: 28px; display: grid; grid-template-columns: repeat(6, 1fr); font-family: var(--font-mono); font-size: var(--step--1); font-variant-numeric: tabular-nums; color: var(--muted); }
+.axis::before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 1px; background: var(--rule); }
+.axis .window { position: absolute; top: -2px; height: 18px; left: calc(100% / 6 * 3); width: calc(100% / 6 * 3); background: var(--red-soft); border: 1px solid var(--red); border-radius: 4px; }
+.axis li { list-style: none; position: relative; padding-top: 22px; }
+.axis li.window { position: absolute; padding: 0; }
+.axis li.window::before { display: none; }
+.axis li::before { content: ""; position: absolute; top: 2px; left: 0; width: 1px; height: 9px; background: var(--muted); }
+.axis li.now { color: var(--ink); font-weight: 500; }
+.axis li.now::before { width: 9px; height: 9px; border-radius: 50%; background: var(--ink); left: -4px; top: 2px; }
+.axis li.in { color: var(--red); font-weight: 500; }
+.axis { padding: 0; margin-bottom: 0; }
+.signals { margin: 24px 0 0; padding: 0; display: grid; gap: 10px; }
+.signals li { list-style: none; display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding-top: 10px; border-top: 1px solid var(--rule); font-size: 0.9375rem; }
+.signals li span { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); font-variant-numeric: tabular-nums; }
+.horizon-note { margin-top: 16px; font-size: var(--step--1); color: var(--muted); }
+
+/* Clients strip */
+.clients { border-block: 1px solid var(--rule); background: var(--surface); }
+.clients .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; padding-block: 22px; }
+.clients p { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.clients ul { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 0; padding: 0; }
+.clients li { list-style: none; font-family: var(--font-display); font-weight: 600; font-size: 1.0625rem; }
+
+/* Sections */
+section.band .wrap { padding-block: 88px; }
+.section-head { display: grid; gap: 14px; max-width: 46rem; }
+.section-head h2 { font-size: var(--step-3); font-weight: 700; }
+.section-head p { color: var(--muted); font-size: var(--step-1); }
+
+.services { display: grid; gap: 0; margin-top: 48px; border-top: 2px solid var(--ink); }
+@media (min-width: 820px) { .services { grid-template-columns: repeat(3, 1fr); } }
+.service { padding: 28px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 12px; align-content: start; min-width: 0; }
+@media (min-width: 820px) { .service { padding: 32px 28px 32px 0; border-bottom: 0; } .service + .service { padding-left: 28px; border-left: 1px solid var(--rule); } }
+.service .tag { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); }
+.service h3 { font-size: var(--step-2); font-weight: 600; }
+.service p { color: var(--muted); }
+.service ul { margin: 4px 0 0; padding-left: 1.1em; color: var(--ink); font-size: 0.9375rem; display: grid; gap: 4px; }
+
+/* Coverage */
+.coverage { background: var(--surface); border-block: 1px solid var(--rule); }
+.coverage-grid { display: grid; gap: 48px; margin-top: 48px; }
+@media (min-width: 900px) { .coverage-grid { grid-template-columns: 1.4fr 1fr; gap: 64px; } }
+.coverage h3 { font-size: var(--step-1); font-weight: 600; margin-bottom: 16px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
+.chips li { list-style: none; border: 1px solid var(--rule); background: var(--bg); padding: 7px 14px; border-radius: 999px; font-size: 0.9375rem; }
+.regions { margin: 0; padding: 0; display: grid; gap: 0; }
+.regions li { list-style: none; display: grid; grid-template-columns: 7.5rem 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--rule); }
+.regions li:last-child { border-bottom: 1px solid var(--rule); }
+.regions b { font-family: var(--font-display); font-weight: 600; }
+.regions span { color: var(--muted); font-size: 0.9375rem; }
+
+/* Process: a real sequence, so it is numbered */
+.steps { counter-reset: step; display: grid; gap: 32px; margin: 48px 0 0; padding: 0; }
+@media (min-width: 820px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+.steps li { list-style: none; counter-increment: step; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.steps li::before { content: "Step " counter(step); font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; color: var(--red); padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.steps h3 { font-size: var(--step-2); font-weight: 600; }
+.steps p { color: var(--muted); }
+.discretion { margin-top: 48px; padding: 24px 28px; border-left: 3px solid var(--red); background: var(--red-soft); max-width: 46rem; }
+.discretion b { font-family: var(--font-display); font-size: var(--step-1); display: block; margin-bottom: 6px; }
+
+/* Speaker */
+.speaker { background: var(--ink); color: var(--bg); }
+.speaker .wrap { display: grid; gap: 24px; padding-block: 64px; }
+@media (min-width: 820px) { .speaker .wrap { grid-template-columns: 1fr auto; align-items: center; gap: 48px; } }
+.speaker h2 { font-size: var(--step-3); }
+.speaker p { color: color-mix(in srgb, var(--bg) 72%, var(--ink)); margin-top: 10px; max-width: 40rem; }
+.speaker .btn { border-color: var(--bg); color: var(--bg); }
+.speaker .btn:hover { background: var(--red); border-color: var(--red); color: var(--on-red); }
+.binary { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--red); margin-bottom: 12px; overflow-wrap: anywhere; }
+
+/* Contact */
+.contact-grid { display: grid; gap: 48px; margin-top: 48px; }
+@media (min-width: 900px) { .contact-grid { grid-template-columns: 1.3fr 1fr; gap: 64px; } }
+form { display: grid; gap: 18px; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 28px; min-width: 0; }
+.row { display: grid; gap: 18px; }
+@media (min-width: 620px) { .row { grid-template-columns: 1fr 1fr; } }
+label { display: grid; gap: 6px; font-size: 0.875rem; font-weight: 500; }
+label .opt { color: var(--muted); font-weight: 400; }
+input, select, textarea { font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--rule); border-radius: 8px; padding: 11px 12px; width: 100%; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--red); outline-offset: 0; border-color: transparent; }
+textarea { min-height: 140px; resize: vertical; }
+.form-status { font-size: 0.9375rem; min-height: 1.5em; }
+.form-status.ok { color: var(--ink); }
+.form-status.warn { color: var(--red); }
+.details { display: grid; gap: 28px; align-content: start; }
+.details h3 { font-size: var(--step-1); font-weight: 600; margin-bottom: 8px; }
+.details p, .details li { color: var(--muted); }
+.details ul { margin: 0; padding: 0; display: grid; gap: 6px; }
+.details li { list-style: none; display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px dashed var(--rule); padding-bottom: 6px; font-variant-numeric: tabular-nums; }
+.details li b { color: var(--ink); font-weight: 500; }
+.details a { color: var(--ink); text-decoration-color: var(--red); text-underline-offset: 3px; }
+
+/* Footer */
+footer { border-top: 1px solid var(--rule); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-block: 32px; font-size: 0.875rem; color: var(--muted); }
+footer nav { display: flex; flex-wrap: wrap; gap: 20px; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--red); }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="#top" aria-label="Bateman Research, home">
+      <b>bateman<span>research</span></b>
+      <small aria-hidden="true">01100010 01110010 01100101 01110011</small>
+    </a>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="#services">What we do</a>
+      <a href="#coverage">Coverage</a>
+      <a href="#approach">How we work</a>
+      <a href="#speaking">Speaking</a>
+      <a class="cta" href="#contact">Book a consultation</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Technology foresight since 2013</p>
+        <h1>Know which technologies will shape your business by <em><span class="yr-3">2029</span>–<span class="yr-5">2031</span></em>.</h1>
+        <p class="lede">Bateman Research helps boards, investors, governments and founders understand the technologies that will be mainstream in three to five years, and what they will change for your company.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Book a consultation</a>
+          <a class="btn btn-ghost" href="#services">See what we do</a>
+        </div>
+      </div>
+
+      <aside class="horizon" aria-label="Our research horizon">
+        <div class="horizon-head">
+          <h2>Our research horizon</h2>
+          <span>3–5 years out</span>
+        </div>
+        <ol class="axis" aria-hidden="true">
+          <li class="window"></li>
+          <li class="now yr-0">2026</li>
+          <li class="yr-1">2027</li>
+          <li class="yr-2">2028</li>
+          <li class="in yr-3">2029</li>
+          <li class="in yr-4">2030</li>
+          <li class="in yr-5">2031</li>
+        </ol>
+        <ul class="signals">
+          <li>Semiconductors and advanced packaging <span>Taiwan · China</span></li>
+          <li>Photonics and optical interconnect <span>Data centre</span></li>
+          <li>AR / MR and 3D scanning <span>Devices</span></li>
+          <li>Automotive, telecom and energy <span>Systems</span></li>
+        </ul>
+        <p class="horizon-note">Most decisions are made on what is shipping today. We look at what will be shipping when your investment matures.</p>
+      </aside>
+    </div>
+  </section>
+
+  <div class="clients">
+    <div class="wrap">
+      <p>Who we work with</p>
+      <ul>
+        <li>Corporate boards</li>
+        <li>Strategic investment teams</li>
+        <li>Hedge funds</li>
+        <li>Government agencies</li>
+        <li>Startups</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="band" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">What we do</p>
+        <h2>Research built around your decision, not a generic report.</h2>
+        <p>We write technology and position papers to each client's requirements. Every engagement starts with the decision you need to make.</p>
+      </div>
+      <div class="services">
+        <article class="service">
+          <p class="tag">Strategic planning</p>
+          <h3>Which technologies should you invest in?</h3>
+          <p>Which startups should you be looking at, and which bets are likely to pay off in your time frame.</p>
+          <ul>
+            <li>Technology roadmaps</li>
+            <li>Startup and partner scouting</li>
+            <li>Technology introductions</li>
+          </ul>
+        </article>
+        <article class="service">
+          <p class="tag">Expert analysis</p>
+          <h3>What does the future of technology mean for your company?</h3>
+          <p>Clear, independent analysis for M&amp;A and investment teams who need to know what a technology can really do.</p>
+          <ul>
+            <li>M&amp;A technical due diligence</li>
+            <li>Investment due diligence</li>
+            <li>Technology and position papers</li>
+          </ul>
+        </article>
+        <article class="service">
+          <p class="tag">Risk management</p>
+          <h3>How will current and future technology affect your business?</h3>
+          <p>Find the shifts that could disrupt your products, supply chain or market before your competitors do.</p>
+          <ul>
+            <li>Disruption and supply-chain risk</li>
+            <li>Competitive landscape reviews</li>
+            <li>Board briefings</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band coverage" id="coverage">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Coverage</p>
+        <h2>Current and future technologies, worldwide.</h2>
+        <p>Our clients are worldwide, mostly in Europe, and we have deep coverage of companies in Taiwan and China.</p>
+      </div>
+      <div class="coverage-grid">
+        <div>
+          <h3>Topics</h3>
+          <ul class="chips">
+            <li>Semiconductors</li>
+            <li>Photonics</li>
+            <li>Telecom</li>
+            <li>Automotive</li>
+            <li>Energy</li>
+            <li>Augmented reality</li>
+            <li>Mixed reality</li>
+            <li>3D scanning</li>
+            <li>AI infrastructure</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Regions</h3>
+          <ul class="regions">
+            <li><b>Europe</b><span>Where most of our clients are based</span></li>
+            <li><b>Taiwan</b><span>Semiconductor and electronics supply chain</span></li>
+            <li><b>China</b><span>Manufacturing, devices and emerging competitors</span></li>
+            <li><b>Worldwide</b><span>Engagements on any market by request</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="approach">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How we work</p>
+        <h2>A boutique practice with boots on the ground.</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>We sit down and talk</h3>
+          <p>We learn why you need the research and what decision it supports.</p>
+        </li>
+        <li>
+          <h3>We agree a plan</h3>
+          <p>We set the scope, the questions to answer and the results you can expect.</p>
+        </li>
+        <li>
+          <h3>We go and find out</h3>
+          <p>We do the field work: visiting companies, talking to engineers and checking claims at the source.</p>
+        </li>
+      </ol>
+      <div class="discretion">
+        <b>Your name stays out of it.</b>
+        <p>Most of our research clients are never mentioned while we work, so we do not bias the research or tip off an M&amp;A opportunity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="speaker" id="speaking">
+    <div class="wrap">
+      <div>
+        <p class="binary" aria-hidden="true">01100110 01110101 01110100 01110101 01110010 01100101</p>
+        <h2>Book Bruce Bateman to speak.</h2>
+        <p>Keynotes and executive briefings on where semiconductors, photonics and emerging technology are heading, and what it means for business.</p>
+      </div>
+      <a class="btn" href="http://brucebateman.com" target="_blank" rel="noopener">Visit the speaker site ↗</a>
+    </div>
+  </section>
+
+  <section class="band" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Contact</p>
+        <h2>Tell us about your decision.</h2>
+        <p>Share a little about your business and what you need to know. We will get back to you with ideas for a tailored engagement.</p>
+      </div>
+      <div class="contact-grid">
+        <form id="contact-form" novalidate data-endpoint="">
+          <div class="row">
+            <label for="f-name">Name
+              <input id="f-name" name="name" autocomplete="name" required>
+            </label>
+            <label for="f-email">Work email
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+            </label>
+          </div>
+          <div class="row">
+            <label for="f-org">Organisation <span class="opt">(optional)</span>
+              <input id="f-org" name="organisation" autocomplete="organization">
+            </label>
+            <label for="f-topic">Topic
+              <select id="f-topic" name="topic">
+                <option>Strategic planning</option>
+                <option>M&amp;A or investment due diligence</option>
+                <option>Risk management</option>
+                <option>Speaking engagement</option>
+                <option>Something else</option>
+              </select>
+            </label>
+          </div>
+          <label for="f-msg">What would you like to know?
+            <textarea id="f-msg" name="message" required></textarea>
+          </label>
+          <div class="actions" style="margin-top:0">
+            <button class="btn btn-primary" type="submit">Send enquiry</button>
+          </div>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <div class="details">
+          <div>
+            <h3>Hours</h3>
+            <ul>
+              <li>Monday – Friday <b>9:00 – 17:00</b></li>
+              <li>Saturday – Sunday <b>Closed</b></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Elsewhere</h3>
+            <p><a href="http://brucebateman.com" target="_blank" rel="noopener">brucebateman.com</a> · <a href="https://www.facebook.com/1540277052878230" target="_blank" rel="noopener">Facebook</a></p>
+          </div>
+          <div>
+            <h3>Questions we often hear</h3>
+            <p><b style="color:var(--ink);font-weight:500">Do you work with small companies?</b> Yes. Our clients range from startups to corporate boards and national governments.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2013–<span id="yr-now">2026</span> Bateman Research. All rights reserved.</p>
+    <nav aria-label="Footer">
+      <a href="#services">What we do</a>
+      <a href="#coverage">Coverage</a>
+      <a href="#approach">How we work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Keep the horizon current: label the axis from this year to +5.
+  var y = new Date().getFullYear();
+  for (var i = 0; i <= 5; i++) {
+    document.querySelectorAll('.yr-' + i).forEach(function (el) { el.textContent = y + i; });
+  }
+  var foot = document.getElementById('yr-now'); if (foot) foot.textContent = y;
+
+  // Mobile menu
+  var btn = document.getElementById('menu-btn'), nav = document.getElementById('site-nav');
+  btn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  });
+
+  // Contact form. Set data-endpoint (e.g. a Formspree URL) to deliver enquiries.
+  var form = document.getElementById('contact-form'), status = document.getElementById('form-status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.className = 'form-status';
+    if (!form.checkValidity()) {
+      status.textContent = 'Please add your name, a valid email and a short message.';
+      status.classList.add('warn');
+      var bad = form.querySelector(':invalid'); if (bad) bad.focus();
+      return;
+    }
+    var endpoint = form.getAttribute('data-endpoint');
+    if (!endpoint) {
+      status.textContent = 'This preview form is not connected yet, so nothing was sent.';
+      status.classList.add('warn');
+      return;
+    }
+    status.textContent = 'Sending…';
+    fetch(endpoint, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
+      .then(function (r) {
+        if (!r.ok) throw new Error();
+        form.reset();
+        status.textContent = 'Thanks. Your enquiry was sent and we will be in touch soon.';
+        status.classList.add('ok');
+      })
+      .catch(function () {
+        status.textContent = 'The enquiry could not be sent. Please try again in a moment.';
+        status.classList.add('warn');
+      });
+  });
+})();
+</script>
+</body>
+</html>
