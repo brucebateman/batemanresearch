@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8"/>
+<title>Bateman Research｜技術前瞻研究</title>
+<meta content="cover" name="claude:viewport-fit-sides"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="Bateman Research 協助董事會、投資人、政府與新創公司掌握未來 3 到 5 年的關鍵技術，以及這些技術對您事業的意義。涵蓋半導體、光子、電信、汽車、能源等領域。" name="description"/>
+<meta content="Bateman Research｜技術前瞻研究" property="og:title"/>
+<meta content="技術前瞻、盡職調查與觀點報告。提前看見三到五年後支撐您事業的技術。" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://www.batemanresearch.com/zh/index.html" property="og:url"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23121417'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='34' fill='%23ffffff'%3Eb%3Ctspan fill='%23e0303a'%3Er%3C/tspan%3E%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Bateman Research","url":"https://www.batemanresearch.com/","foundingDate":"2013","description":"Technology foresight, M&A and investment due diligence, and position papers on technologies that will be prevalent in 3 to 5 years.","areaServed":["Europe","Taiwan","China","Worldwide"],"openingHours":"Mo-Fr 09:00-17:00","sameAs":["https://www.facebook.com/1540277052878230","http://brucebateman.com"]}
+</script>
+<style>
+/* Layout: a "horizon" page. A sticky masthead, a split hero that plots now → +5 years,
+   then ruled full-width bands (services, coverage, process, contact) on a 1120px measure. */
+:root {
+  --bg: #f5f6f7;          /* paper, slight cool bias */
+  --surface: #ffffff;
+  --ink: #121417;         /* the "bateman" black */
+  --muted: #5a6068;
+  --rule: #d9dce0;
+  --red: #d3202b;         /* the "research" red */
+  --red-soft: #fbe7e8;
+  --on-red: #ffffff;
+  --font-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --measure: 1120px;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-2: 1.5rem;
+  --step-3: clamp(1.75rem, 1.3rem + 1.6vw, 2.375rem);
+  --step-4: clamp(2.25rem, 1.4rem + 3.4vw, 3.75rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1013; --surface: #161a1f; --ink: #eef0f2; --muted: #a2a9b2;
+    --rule: #2a2f36; --red: #ff4d55; --red-soft: #2a1416; --on-red: #14080a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1013; --surface: #161a1f; --ink: #eef0f2; --muted: #a2a9b2;
+  --rule: #2a2f36; --red: #ff4d55; --red-soft: #2a1416; --on-red: #14080a;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 30; background: var(--bg);
+}
+img { max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
+p { margin: 0; }
+
+.wrap {
+  max-width: var(--measure); margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) { .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); } }
+
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--bg); padding: 8px 12px; z-index: 50; }
+.skip:focus { left: 16px; }
+
+/* Masthead */
+.masthead {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.wordmark { text-decoration: none; display: grid; gap: 1px; line-height: 1; }
+.wordmark b { font-family: var(--font-display); font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; }
+.wordmark b span { color: var(--red); }
+.wordmark small { font-family: var(--font-mono); font-size: 0.5625rem; letter-spacing: 0.06em; color: var(--muted); }
+.nav { display: flex; align-items: center; gap: 4px; }
+.nav a { text-decoration: none; font-size: 0.9375rem; padding: 8px 12px; border-radius: 6px; color: var(--muted); }
+.nav a:hover { color: var(--ink); }
+.nav .cta { background: var(--ink); color: var(--bg); font-weight: 500; margin-left: 6px; }
+.nav .cta:hover { background: var(--red); color: var(--on-red); }
+.menu-btn { display: none; font: inherit; background: none; border: 1px solid var(--rule); color: var(--ink); border-radius: 6px; padding: 7px 12px; }
+@media (max-width: 760px) {
+  .menu-btn { display: inline-block; }
+  .nav { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--bg); border-bottom: 1px solid var(--rule);
+    padding: 8px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px)); }
+  .nav a { padding: 12px 4px; border-bottom: 1px solid var(--rule); border-radius: 0; }
+  .nav .cta { margin: 12px 0 0; text-align: center; border-radius: 6px; border: 0; }
+  .nav:not(.open) { display: none; }
+}
+
+/* Hero */
+.hero .wrap { display: grid; gap: 48px; padding-block: 72px 64px; }
+@media (min-width: 900px) { .hero .wrap { grid-template-columns: 1.15fr 1fr; align-items: center; gap: 64px; padding-block: 96px 88px; } }
+.eyebrow { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); }
+.hero h1 { font-size: var(--step-4); font-weight: 700; margin-top: 16px; }
+.hero h1 em { font-style: normal; color: var(--red); white-space: nowrap; }
+.lede { font-size: var(--step-1); color: var(--muted); margin-top: 20px; max-width: 34em; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 500; padding: 12px 20px; border-radius: 8px; border: 1px solid var(--ink); transition: background .15s, color .15s, border-color .15s; font: inherit; cursor: pointer; }
+.btn-primary { background: var(--red); border-color: var(--red); color: var(--on-red); }
+.btn-primary:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { border-color: var(--red); color: var(--red); }
+
+/* Horizon chart: now → +5 years, with the 3–5 year window highlighted */
+.horizon { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 24px; min-width: 0; }
+.horizon-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.horizon-head h2 { font-size: var(--step-1); font-weight: 600; }
+.horizon-head span { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); }
+.axis { position: relative; margin-top: 28px; display: grid; grid-template-columns: repeat(6, 1fr); font-family: var(--font-mono); font-size: var(--step--1); font-variant-numeric: tabular-nums; color: var(--muted); }
+.axis::before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 1px; background: var(--rule); }
+.axis .window { position: absolute; top: -2px; height: 18px; left: calc(100% / 6 * 3); width: calc(100% / 6 * 3); background: var(--red-soft); border: 1px solid var(--red); border-radius: 4px; }
+.axis li { list-style: none; position: relative; padding-top: 22px; }
+.axis li.window { position: absolute; padding: 0; }
+.axis li.window::before { display: none; }
+.axis li::before { content: ""; position: absolute; top: 2px; left: 0; width: 1px; height: 9px; background: var(--muted); }
+.axis li.now { color: var(--ink); font-weight: 500; }
+.axis li.now::before { width: 9px; height: 9px; border-radius: 50%; background: var(--ink); left: -4px; top: 2px; }
+.axis li.in { color: var(--red); font-weight: 500; }
+.axis { padding: 0; margin-bottom: 0; }
+.signals { margin: 24px 0 0; padding: 0; display: grid; gap: 10px; }
+.signals li { list-style: none; display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding-top: 10px; border-top: 1px solid var(--rule); font-size: 0.9375rem; }
+.signals li span { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); font-variant-numeric: tabular-nums; }
+.horizon-note { margin-top: 16px; font-size: var(--step--1); color: var(--muted); }
+
+/* Clients strip */
+.clients { border-block: 1px solid var(--rule); background: var(--surface); }
+.clients .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; padding-block: 22px; }
+.clients p { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.clients ul { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 0; padding: 0; }
+.clients li { list-style: none; font-family: var(--font-display); font-weight: 600; font-size: 1.0625rem; }
+
+/* Sections */
+section.band .wrap { padding-block: 88px; }
+.section-head { display: grid; gap: 14px; max-width: 46rem; }
+.section-head h2 { font-size: var(--step-3); font-weight: 700; }
+.section-head p { color: var(--muted); font-size: var(--step-1); }
+
+.services { display: grid; gap: 0; margin-top: 48px; border-top: 2px solid var(--ink); }
+@media (min-width: 820px) { .services { grid-template-columns: repeat(3, 1fr); } }
+.service { padding: 28px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 12px; align-content: start; min-width: 0; }
+@media (min-width: 820px) { .service { padding: 32px 28px 32px 0; border-bottom: 0; } .service + .service { padding-left: 28px; border-left: 1px solid var(--rule); } }
+.service .tag { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); }
+.service h3 { font-size: var(--step-2); font-weight: 600; }
+.service p { color: var(--muted); }
+.service ul { margin: 4px 0 0; padding-left: 1.1em; color: var(--ink); font-size: 0.9375rem; display: grid; gap: 4px; }
+
+/* Coverage */
+.coverage { background: var(--surface); border-block: 1px solid var(--rule); }
+.coverage-grid { display: grid; gap: 48px; margin-top: 48px; }
+@media (min-width: 900px) { .coverage-grid { grid-template-columns: 1.4fr 1fr; gap: 64px; } }
+.coverage h3 { font-size: var(--step-1); font-weight: 600; margin-bottom: 16px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
+.chips li { list-style: none; border: 1px solid var(--rule); background: var(--bg); padding: 7px 14px; border-radius: 999px; font-size: 0.9375rem; }
+.regions { margin: 0; padding: 0; display: grid; gap: 0; }
+.regions li { list-style: none; display: grid; grid-template-columns: 7.5rem 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--rule); }
+.regions li:last-child { border-bottom: 1px solid var(--rule); }
+.regions b { font-family: var(--font-display); font-weight: 600; }
+.regions span { color: var(--muted); font-size: 0.9375rem; }
+
+/* Process: a real sequence, so it is numbered */
+.steps { counter-reset: step; display: grid; gap: 32px; margin: 48px 0 0; padding: 0; }
+@media (min-width: 820px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+.steps li { list-style: none; counter-increment: step; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.steps li::before { content: "Step " counter(step); font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; color: var(--red); padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.steps h3 { font-size: var(--step-2); font-weight: 600; }
+.steps p { color: var(--muted); }
+.discretion { margin-top: 48px; padding: 24px 28px; border-left: 3px solid var(--red); background: var(--red-soft); max-width: 46rem; }
+.discretion b { font-family: var(--font-display); font-size: var(--step-1); display: block; margin-bottom: 6px; }
+
+/* Speaker */
+.speaker { background: var(--ink); color: var(--bg); }
+.speaker .wrap { display: grid; gap: 24px; padding-block: 64px; }
+@media (min-width: 820px) { .speaker .wrap { grid-template-columns: 1fr auto; align-items: center; gap: 48px; } }
+.speaker h2 { font-size: var(--step-3); }
+.speaker p { color: color-mix(in srgb, var(--bg) 72%, var(--ink)); margin-top: 10px; max-width: 40rem; }
+.speaker .btn { border-color: var(--bg); color: var(--bg); }
+.speaker .btn:hover { background: var(--red); border-color: var(--red); color: var(--on-red); }
+.binary { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--red); margin-bottom: 12px; overflow-wrap: anywhere; }
+
+/* Contact */
+.contact-grid { display: grid; gap: 48px; margin-top: 48px; }
+@media (min-width: 900px) { .contact-grid { grid-template-columns: 1.3fr 1fr; gap: 64px; } }
+form { display: grid; gap: 18px; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 28px; min-width: 0; }
+.row { display: grid; gap: 18px; }
+@media (min-width: 620px) { .row { grid-template-columns: 1fr 1fr; } }
+label { display: grid; gap: 6px; font-size: 0.875rem; font-weight: 500; }
+label .opt { color: var(--muted); font-weight: 400; }
+input, select, textarea { font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--rule); border-radius: 8px; padding: 11px 12px; width: 100%; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--red); outline-offset: 0; border-color: transparent; }
+textarea { min-height: 140px; resize: vertical; }
+.form-status { font-size: 0.9375rem; min-height: 1.5em; }
+.form-status.ok { color: var(--ink); }
+.form-status.warn { color: var(--red); }
+.details { display: grid; gap: 28px; align-content: start; }
+.details h3 { font-size: var(--step-1); font-weight: 600; margin-bottom: 8px; }
+.details p, .details li { color: var(--muted); }
+.details ul { margin: 0; padding: 0; display: grid; gap: 6px; }
+.details li { list-style: none; display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px dashed var(--rule); padding-bottom: 6px; font-variant-numeric: tabular-nums; }
+.details li b { color: var(--ink); font-weight: 500; }
+.details a { color: var(--ink); text-decoration-color: var(--red); text-underline-offset: 3px; }
+
+/* Footer */
+footer { border-top: 1px solid var(--rule); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-block: 32px; font-size: 0.875rem; color: var(--muted); }
+footer nav { display: flex; flex-wrap: wrap; gap: 20px; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--red); }
+</style>
+<!--lang-switch--><style id="lang-switch-css">.lang-switch{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:36px;padding:6px 12px;border:1px solid currentColor;border-radius:6px;font-size:14px;font-weight:600;line-height:1;text-decoration:none;white-space:nowrap;opacity:.85}.lang-switch:hover{opacity:1}html[lang^="zh"] body{word-break:normal;line-break:strict}html[lang^="zh"] .eyebrow,html[lang^="zh"] small{letter-spacing:.04em}.masthead .wrap{justify-content:flex-start}.masthead .wordmark{margin-right:auto}.masthead .lang-switch{color:var(--ink);font-family:inherit}</style><link rel="alternate" hreflang="en" href="https://www.batemanresearch.com/"><link rel="alternate" hreflang="zh-Hant" href="https://www.batemanresearch.com/zh/index.html"><link rel="alternate" hreflang="x-default" href="https://www.batemanresearch.com/"><!--/lang-switch--></head>
+<body>
+<a class="skip" href="#main">跳至主要內容</a>
+<header class="masthead">
+<div class="wrap">
+<a aria-label="Bateman Research 首頁" class="wordmark" href="#top"><b>bateman<span>research</span></b> <small aria-hidden="true">01100010 01110010 01100101 01110011</small></a>
+<button aria-controls="site-nav" aria-expanded="false" class="menu-btn" id="menu-btn">選單</button>
+<nav aria-label="主選單" class="nav" id="site-nav">
+<a href="#services">服務項目</a>
+<a href="#coverage">研究範疇</a>
+<a href="#approach">合作方式</a>
+<a href="#speaking">演講邀約</a>
+<a class="cta" href="#contact">預約諮詢</a>
+</nav><!--lang-switch--><a id="lang-switch" class="lang-switch" href="../index.html" hreflang="en" lang="en" aria-label="Switch to English">EN</a><!--/lang-switch-->
+</div>
+</header>
+<main id="main">
+<section class="hero" id="top">
+<div class="wrap">
+<div>
+<p class="eyebrow">自 2013 年起專注技術前瞻</p>
+<h1>掌握在 <em><span class="yr-3">2029</span>–<span class="yr-5">2031</span></em> 年將形塑您事業的技術。</h1>
+<p class="lede">Bateman Research 協助董事會、投資人、政府與創辦人，了解三到五年後將成為主流的技術，以及它們將為您的公司帶來哪些改變。</p>
+<div class="actions">
+<a class="btn btn-primary" href="#contact">預約諮詢</a>
+<a class="btn btn-ghost" href="#services">了解我們的服務</a>
+</div>
+</div>
+<aside aria-label="我們的研究視野" class="horizon">
+<div class="horizon-head">
+<h2>我們的研究視野</h2>
+<span>未來 3–5 年</span>
+</div>
+<ol aria-hidden="true" class="axis">
+<li class="window"></li>
+<li class="now yr-0">2026</li>
+<li class="yr-1">2027</li>
+<li class="yr-2">2028</li>
+<li class="in yr-3">2029</li>
+<li class="in yr-4">2030</li>
+<li class="in yr-5">2031</li>
+</ol>
+<ul class="signals">
+<li>半導體與先進封裝 <span>台灣 · 中國</span></li>
+<li>光子與光互連 <span>資料中心</span></li>
+<li>實體 AI 與機器人 <span>邊緣 · 工廠</span></li>
+<li>AR / MR 與 3D 掃描 <span>裝置</span></li>
+<li>汽車、電信與能源 <span>系統</span></li>
+</ul>
+<p class="horizon-note">多數決策依據的是今天已出貨的產品。我們看的是，當您的投資開花結果時，市場上出貨的會是什麼。</p>
+</aside>
+</div>
+</section>
+<div class="clients">
+<div class="wrap">
+<p>我們的客戶</p>
+<ul>
+<li>企業董事會</li>
+<li>策略投資團隊</li>
+<li>避險基金</li>
+<li>政府機關</li>
+<li>新創公司</li>
+</ul>
+</div>
+</div>
+<section class="band" id="services">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">服務項目</p>
+<h2>圍繞您的決策量身打造研究，而非制式報告。</h2>
+<p>我們依每位客戶的需求撰寫技術報告與觀點報告。每一項合作，都從您需要做的決策出發。</p>
+</div>
+<div class="services">
+<article class="service">
+<p class="tag">策略規劃</p>
+<h3>您該投資哪些技術？</h3>
+<p>哪些新創公司值得關注，哪些布局可望在您的時程內獲得回報。</p>
+<ul>
+<li>技術藍圖</li>
+<li>新創與合作夥伴搜尋</li>
+<li>技術引介</li>
+</ul>
+</article>
+<article class="service">
+<p class="tag">專家分析</p>
+<h3>未來的技術對您的公司意味著什麼？</h3>
+<p>為併購與投資團隊提供清楚、獨立的分析，讓您掌握一項技術的真正實力。</p>
+<ul>
+<li>併購技術盡職調查</li>
+<li>投資盡職調查</li>
+<li>技術報告與觀點報告</li>
+</ul>
+</article>
+<article class="service">
+<p class="tag">風險管理</p>
+<h3>現在與未來的技術將如何影響您的事業？</h3>
+<p>搶在競爭對手之前，找出可能顛覆您產品、供應鏈或市場的變化。</p>
+<ul>
+<li>顛覆性變化與供應鏈風險</li>
+<li>競爭態勢評估</li>
+<li>董事會簡報</li>
+</ul>
+</article>
+</div>
+</div>
+</section>
+<section class="band coverage" id="coverage">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">研究範疇</p>
+<h2>涵蓋全球現在與未來的技術。</h2>
+<p>我們的客戶遍布全球，以歐洲為主，並深入追蹤台灣與中國的企業。</p>
+</div>
+<div class="coverage-grid">
+<div>
+<h3>主題</h3>
+<ul class="chips">
+<li>半導體</li>
+<li>光子</li>
+<li>電信</li>
+<li>汽車</li>
+<li>能源</li>
+<li>擴增實境</li>
+<li>混合實境</li>
+<li>3D 掃描</li>
+<li>AI 基礎設施</li>
+</ul>
+</div>
+<div>
+<h3>地區</h3>
+<ul class="regions">
+<li><b>歐洲</b><span>多數客戶所在地</span></li>
+<li><b>台灣</b><span>半導體與電子供應鏈</span></li>
+<li><b>中國</b><span>製造、終端裝置與新興競爭者</span></li>
+<li><b>全球</b><span>可依需求研究任何市場</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="band" id="approach">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">合作方式</p>
+<h2>小而精的研究團隊，親赴第一線。</h2>
+</div>
+<ol class="steps">
+<li>
+<h3>坐下來好好談</h3>
+<p>了解您為何需要這份研究，以及它要支持哪一項決策。</p>
+</li>
+<li>
+<h3>共同擬定計畫</h3>
+<p>確定研究範圍、要回答的問題，以及您可以預期的成果。</p>
+</li>
+<li>
+<h3>實地查證</h3>
+<p>我們親自做田野調查：拜訪企業、與工程師交談，並從源頭查證各種說法。</p>
+</li>
+</ol>
+<div class="discretion">
+<b>您的名字不會曝光。</b>
+<p>研究進行期間，我們多半不會透露客戶身分，以免研究結果受到影響，或讓併購機會走漏風聲。</p>
+</div>
+</div>
+</section>
+<section class="speaker" id="speaking">
+<div class="wrap">
+<div>
+<p aria-hidden="true" class="binary">01100110 01110101 01110100 01110101 01110010 01100101</p>
+<h2>邀請 Bruce Bateman 演講。</h2>
+<p>專題演講與高階主管簡報，剖析半導體、光子與新興技術的走向，以及對企業的影響。</p>
+</div>
+<a class="btn" href="http://brucebateman.com" rel="noopener" target="_blank">前往演講網站 ↗</a>
+</div>
+</section>
+<section class="band" id="contact">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">聯絡我們</p>
+<h2>告訴我們您要做的決策。</h2>
+<p>簡單介紹您的業務以及想了解的問題，我們會回覆您量身規劃的合作建議。</p>
+</div>
+<div class="contact-grid">
+<form data-endpoint="https://formsubmit.co/ajax/info@batemanresearch.com" id="contact-form" novalidate="">
+<input name="_subject" type="hidden" value="New enquiry from batemanresearch.com"/>
+<input name="_template" type="hidden" value="table"/>
+<input aria-hidden="true" autocomplete="off" id="f-honey" name="_honey" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" tabindex="-1" type="text"/>
+<div class="row">
+<label for="f-name">姓名
+              <input autocomplete="name" id="f-name" name="name" required=""/>
+</label>
+<label for="f-email">公司電子郵件
+              <input autocomplete="email" id="f-email" name="email" required="" type="email"/>
+</label>
+</div>
+<div class="row">
+<label for="f-org">公司／機構 <span class="opt">（選填）</span>
+<input autocomplete="organization" id="f-org" name="organisation"/>
+</label>
+<label for="f-topic">主題
+              <select id="f-topic" name="topic">
+<option>策略規劃</option>
+<option>併購或投資盡職調查</option>
+<option>風險管理</option>
+<option>演講邀約</option>
+<option>其他</option>
+</select>
+</label>
+</div>
+<label for="f-msg">您想了解什麼？
+            <textarea id="f-msg" name="message" required=""></textarea>
+</label>
+<div class="actions" style="margin-top:0">
+<button class="btn btn-primary" type="submit">送出詢問</button>
+</div>
+<p aria-live="polite" class="form-status" id="form-status" role="status"></p>
+</form>
+<div class="details">
+<div>
+<h3>服務時間</h3>
+<ul>
+<li>週一至週五 <b>9:00 – 17:00</b></li>
+<li>週六、週日 <b>休息</b></li>
+</ul>
+</div>
+<div>
+<h3>電子郵件</h3>
+<p><a href="mailto:info@batemanresearch.com">info@batemanresearch.com</a></p>
+</div>
+<div>
+<h3>其他連結</h3>
+<p><a href="https://www.brucebateman.com/zh/" rel="noopener" target="_blank">brucebateman.com</a> · <a href="https://www.facebook.com/1540277052878230" rel="noopener" target="_blank">Facebook</a></p>
+</div>
+<div>
+<h3>常見問題</h3>
+<p><b style="color:var(--ink);font-weight:500">你們也和小公司合作嗎？</b> 是的。我們的客戶從新創公司到企業董事會、各國政府都有。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<p>© 2013–<span id="yr-now">2026</span> Bateman Research。版權所有。</p>
+<nav aria-label="頁尾">
+<a href="#services">服務項目</a>
+<a href="#coverage">研究範疇</a>
+<a href="#approach">合作方式</a>
+<a href="#contact">聯絡我們</a>
+</nav>
+</div>
+</footer>
+<script>
+(function () {
+  // Keep the horizon current: label the axis from this year to +5.
+  var y = new Date().getFullYear();
+  for (var i = 0; i <= 5; i++) {
+    document.querySelectorAll('.yr-' + i).forEach(function (el) { el.textContent = y + i; });
+  }
+  var foot = document.getElementById('yr-now'); if (foot) foot.textContent = y;
+
+  // Mobile menu
+  var btn = document.getElementById('menu-btn'), nav = document.getElementById('site-nav');
+  btn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  });
+
+  // Contact form. Set data-endpoint (e.g. a Formspree URL) to deliver enquiries.
+  var form = document.getElementById('contact-form'), status = document.getElementById('form-status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.className = 'form-status';
+    if (!form.checkValidity()) {
+      status.textContent = '請填寫姓名、有效的電子郵件和簡短訊息。';
+      status.classList.add('warn');
+      var bad = form.querySelector(':invalid'); if (bad) bad.focus();
+      return;
+    }
+    var endpoint = form.getAttribute('data-endpoint');
+    if (!endpoint) {
+      status.textContent = '此預覽表單尚未連線，訊息並未送出。';
+      status.classList.add('warn');
+      return;
+    }
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = v; });
+    if (data._honey) return; // bot filled the hidden field
+    data._replyto = data.email;
+    var submit = form.querySelector('button[type="submit"]');
+    submit.disabled = true;
+    status.textContent = '傳送中…';
+    fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok || String(j.success) !== 'true') throw new Error(); }); })
+      .then(function () {
+        form.reset();
+        status.textContent = '謝謝！您的詢問已送出，我們會盡快與您聯繫。';
+        status.classList.add('ok');
+      })
+      .catch(function () {
+        status.textContent = '詢問未能送出。請再試一次，或寫信至 info@batemanresearch.com。';
+        status.classList.add('warn');
+      })
+      .then(function () { submit.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>

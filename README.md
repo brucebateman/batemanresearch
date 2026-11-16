@@ -25,3 +25,14 @@ to keep the address out of the page source, replace the email in the form's `dat
 
 Any static host works. For GitHub Pages: Settings → Pages → deploy from `main`, root folder.
 To serve it at www.batemanresearch.com, add a `CNAME` file containing the domain and point DNS at GitHub Pages.
+
+## 繁體中文版 (Traditional Chinese)
+
+The Traditional Chinese (Taiwan) page is `zh/index.html`, linked by the EN / 中文 button at the top right.
+It is generated from the English page, so edit `index.html` first, then run:
+
+    python3 zh_hant.py extract   # lists English text that has no translation yet
+    python3 zh_hant.py build     # rebuilds zh/index.html and refreshes the language button
+
+Translations live in `zh-Hant.json` (`strings`: English → Chinese). Anything without a translation stays in English
+until it is added there.
